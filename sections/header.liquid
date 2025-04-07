@@ -1,0 +1,87 @@
+{%- style -%}
+  .header {
+    padding: var(--spacing-unit) 0;
+    background: var(--color-background);
+    position: relative;
+    z-index: 100;
+  }
+
+  .header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header__logo {
+    max-width: 150px;
+  }
+
+  .header__nav {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 4);
+    align-items: center;
+  }
+
+  .header__nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .header__cart {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-unit);
+  }
+{%- endstyle -%}
+
+<header class="header">
+  <div class="container header__container">
+    <nav class="header__nav">
+      <a href="{{ routes.root_url }}" class="header__nav-link">Shop</a>
+      <a href="/pages/about" class="header__nav-link">About Us</a>
+      <a href="/pages/how-it-works" class="header__nav-link">How It Works</a>
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="header__logo">
+      <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" width="150">
+    </a>
+
+    <div class="header__nav">
+      <a href="/pages/journal" class="header__nav-link">Journal</a>
+      <a href="/pages/faq" class="header__nav-link">FAQ</a>
+      <a href="/pages/contact" class="header__nav-link">Contact</a>
+      <a href="{{ routes.cart_url }}" class="header__cart">
+        {% render 'icon-cart' %}
+        <span>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 150
+    }
+  ]
+}
+{% endschema %} 

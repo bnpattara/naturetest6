@@ -1,0 +1,173 @@
+{%- style -%}
+  .testimonials-section {
+    padding: calc(var(--spacing-unit) * 8) 0;
+    background-color: var(--color-background);
+  }
+
+  .testimonials-section__header {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 6);
+  }
+
+  .testimonials-section__title {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .testimonials-section__description {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(var(--spacing-unit) * 4);
+  }
+
+  .testimonial-card {
+    background: #f9f9f9;
+    padding: calc(var(--spacing-unit) * 4);
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  .testimonial-card__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .testimonial-card__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: calc(var(--spacing-unit) * 2);
+  }
+
+  .testimonial-card__name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+  }
+
+  .testimonial-card__title {
+    font-size: 0.875rem;
+    color: #666;
+  }
+
+  .testimonial-card__quote {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      gap: calc(var(--spacing-unit) * 3);
+    }
+  }
+{%- endstyle -%}
+
+<div class="testimonials-section">
+  <div class="container">
+    <div class="testimonials-section__header">
+      <h2 class="testimonials-section__title">What Our Customers Say</h2>
+      <p class="testimonials-section__description">Join our community of nature lovers who've made the switch to sustainable hygiene.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-card__header">
+          <img src="{{ 'avatar-1.jpg' | asset_url }}" alt="Sarah K." class="testimonial-card__avatar">
+          <div>
+            <h3 class="testimonial-card__name">Sarah K.</h3>
+            <p class="testimonial-card__title">Hiker & Backpacker</p>
+          </div>
+        </div>
+        <p class="testimonial-card__quote">"I love how these wipes are hiking-friendly. They're perfect for staying fresh on multi-day treks, and I love that they break down naturally in the environment."</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-card__header">
+          <img src="{{ 'avatar-2.jpg' | asset_url }}" alt="Michael T." class="testimonial-card__avatar">
+          <div>
+            <h3 class="testimonial-card__name">Michael T.</h3>
+            <p class="testimonial-card__title">Frequent Traveler</p>
+          </div>
+        </div>
+        <p class="testimonial-card__quote">"The soap bars are great! They last forever, smell great, and I don't have to worry about plastic bottles in my luggage. A game-changer for travel!"</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-card__header">
+          <img src="{{ 'avatar-3.jpg' | asset_url }}" alt="Jamie L." class="testimonial-card__avatar">
+          <div>
+            <h3 class="testimonial-card__name">Jamie L.</h3>
+            <p class="testimonial-card__title">Environmental Parent</p>
+          </div>
+        </div>
+        <p class="testimonial-card__quote">"I switched to NatureBuff products to reduce our plastic waste. The kids love the soap bars, and I love knowing we're making a difference with every purchase."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Join our community of nature lovers who've made the switch to sustainable hygiene."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Customer Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Customer Title"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Customer Quote"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %} 

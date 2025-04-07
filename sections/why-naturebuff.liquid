@@ -1,0 +1,138 @@
+{%- style -%}
+  .why-section {
+    padding: calc(var(--spacing-unit) * 8) 0;
+    background-color: #f9f9f9;
+  }
+
+  .why-section__header {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 6);
+  }
+
+  .why-section__title {
+    font-size: 2.5rem;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .why-section__description {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(var(--spacing-unit) * 4);
+  }
+
+  .feature-card {
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 3);
+  }
+
+  .feature-card__icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto calc(var(--spacing-unit) * 3);
+  }
+
+  .feature-card__title {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .feature-card__description {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: calc(var(--spacing-unit) * 3);
+    }
+  }
+{%- endstyle -%}
+
+<div class="why-section">
+  <div class="container">
+    <div class="why-section__header">
+      <h2 class="why-section__title">Why NatureBuff?</h2>
+      <p class="why-section__description">We believe that staying clean shouldn't come at the planet's expense. Our products are designed with both performance and sustainability in mind.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="{{ 'icon-eco.png' | asset_url }}" alt="Eco-Friendly" class="feature-card__icon">
+        <h3 class="feature-card__title">Eco-Friendly</h3>
+        <p class="feature-card__description">All our products are made from sustainable materials and are 100% biodegradable or compostable.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="{{ 'icon-convenient.png' | asset_url }}" alt="Convenient" class="feature-card__icon">
+        <h3 class="feature-card__title">Convenient</h3>
+        <p class="feature-card__description">Designed for on-the-go use, our products are lightweight, compact, and perfect for any adventure.</p>
+      </div>
+
+      <div class="feature-card">
+        <img src="{{ 'icon-zerowaste.png' | asset_url }}" alt="Zero Waste" class="feature-card__icon">
+        <h3 class="feature-card__title">Zero Waste</h3>
+        <p class="feature-card__description">We're committed to minimizing waste with plastic-free packaging and biodegradable materials.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why NatureBuff",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why NatureBuff?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "We believe that staying clean shouldn't come at the planet's expense. Our products are designed with both performance and sustainability in mind."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why NatureBuff",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %} 
